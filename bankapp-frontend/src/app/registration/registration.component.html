@@ -1,0 +1,108 @@
+<nav class="navbar bg-body-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand text-white" href="#">
+        <img src="https://www.seekpng.com/png/full/359-3592973_bank-branch-icon-png-download-white-bank-icon.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top ms-3">
+        SBI Bank
+      </a>
+    </div>
+  </nav>
+  <!-- register loading setup -->
+  <div *ngIf="regLoadingMsg" class="container text-center text-primary m-5">
+    <h2>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Loading_2.gif?20170503175831" alt="" width="100px">
+      Your Data Registering...please wait....
+    </h2>
+  </div>
+  <div *ngIf="regSuccessMsg" class="container text-center text-primary m-5">
+    <h2>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Loading_2.gif?20170503175831" alt="" width="100px">
+      Your Data getting Registered...please wait....
+    </h2>
+  </div>
+
+  <div *ngIf="!regSuccessMsg && !regLoadingMsg" class="container pt-3">
+    <div class="row mt-5 d-flex justify-content-between">
+
+        <div class="col-md-6 col-lg-5 mt-5">
+            <img src="https://icon-library.com/images/register-icon-free/register-icon-free-16.jpg" alt="" class="w-75" style="height: 90%;">
+        </div>
+        <div class="col-12 col-md-7 col-lg-5 login mt-5" style="height: fit-content;">
+            <form [formGroup]="registerForm"  (ngSubmit)="register()">
+              <div class="mb-3">
+                <input type="text" class="form-control" name="accno" formControlName="acno"  placeholder="Account Number">
+                <div *ngIf="this.registerForm.get('acno')?.errors && this.registerForm.get('acno')?.touched" class="text-danger">Invalid account number</div>
+              </div>
+                <div class="mb-3">
+                  <input type="text" class="form-control" name="username" formControlName="username" placeholder="User Name">
+                  <div *ngIf="this.registerForm.get('username')?.errors && this.registerForm.get('username')?.touched" class="text-danger">Invalid Username</div>
+                </div>
+                <div class="mb-3">
+                  <input type="password" class="form-control" name="password" formControlName="password" placeholder="Password">
+                  <div *ngIf="this.registerForm.get('password')?.errors && this.registerForm.get('password')?.touched" class="text-danger">Invalid password</div>
+                </div>
+                <!-- register error message -->
+                <div class="text-danger mt-2 fw-bolder">
+                  <!-- err msg -->
+                  {{regErrorMsg}}
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Sign Up</button>
+              </form>
+              <p class="text-white mt-5">
+                  Already Account?
+                  <a routerLink="/" class="ms-2 text-white">Sign in</a>
+              </p>
+        </div>
+    </div>
+  </div>
+
+<!-- footer code here -->
+
+  <footer class="bg-dark text-center text-white mt-5">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+      <!-- Section: Form -->
+      <section class="">
+        <form action="">
+          <!--Grid row-->
+          <div class="row d-flex justify-content-center">
+            <!--Grid column-->
+            <div class="col-auto">
+              <p class="pt-2">
+                <strong>Sign up for our newsletter</strong>
+              </p>
+            </div>
+            <!--Grid column-->
+  
+            <!--Grid column-->
+            <div class="col-md-5 col-12">
+              <!-- Email input -->
+              <div class="form-outline form-white mb-4">
+                <input type="email" id="form5Example29" class="form-control" />
+                <label class="form-label" for="form5Example29">Email address</label>
+              </div>
+            </div>
+            <!--Grid column-->
+  
+            <!--Grid column-->
+            <div class="col-auto">
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-outline-light mb-4">
+                Subscribe
+              </button>
+            </div>
+            <!--Grid column-->
+          </div>
+          <!--Grid row-->
+        </form>
+      </section>
+      <!-- Section: Form -->
+    </div>
+    <!-- Grid container -->
+  
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2023 Copyright:
+      <a class="text-white" href="/">SBI Bank</a>    
+    </div>
+    <!-- Copyright -->
+  </footer>

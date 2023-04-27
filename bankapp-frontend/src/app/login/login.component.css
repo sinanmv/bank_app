@@ -1,0 +1,12 @@
+.login{
+    background-color:#212529;
+    padding: 50px 20px; 
+    border-radius: 10px;
+    
+}
+.login > *{
+    background-color: transparent   ;
+}
+.login ::placeholder{
+    background-color: transparent;
+}
