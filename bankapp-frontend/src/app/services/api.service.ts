@@ -16,7 +16,7 @@ export class ApiService {
     }
     console.log(body);
     
-    return this.http.post('http://localhost:5000/register',body)
+    return this.http.post('https://bank-backend-5e41.onrender.com/register',body)
 
   }
   // api call for login
@@ -25,7 +25,7 @@ export class ApiService {
     {
       accno,password
     }
-    return this.http.post('http://localhost:5000/login',body)
+    return this.http.post('https://bank-backend-5e41.onrender.com/login',body)
   }
 
    // append token to the req header
@@ -44,7 +44,7 @@ export class ApiService {
   }
   // api call for getbalance
   getbalance(accno:any){
-    return this.http.get('http://localhost:5000/getbalance/'+accno,this.appendToken())
+    return this.http.get('https://bank-backend-5e41.onrender.com/getbalance/'+accno,this.appendToken())
   }
 
   fundTransfer(toaccno:any,password:any,amount:any){
@@ -53,7 +53,16 @@ export class ApiService {
       password,
       amount
     }
-    return this.http.post('http://localhost:5000/fund-transfer',body,this.appendToken())
+    return this.http.post('https://bank-backend-5e41.onrender.com/fund-transfer',body,this.appendToken())
     
   }
+  getTransactionHistory(){
+    return this.http.get('https://bank-backend-5e41.onrender.com/transaction-history',this.appendToken())
+  }
+  // delete user Account
+
+  deleteUserAccount(){
+    return this.http.delete('https://bank-backend-5e41.onrender.com/delete-account',this.appendToken())
+  }
+  
 }

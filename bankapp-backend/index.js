@@ -103,3 +103,17 @@ server.post('/fund-transfer',jwtMiddleware,(req,res)=>{
         res.status(result.statusCode).json(result)
     })
 })
+
+server.get('/transaction-history',jwtMiddleware,(req,res)=>{
+    console.log("inside transaction histroy");
+    logic.getTransactionHistory(req.currentAccno).then((result)=>{
+        res.status(result.statusCode).json(result)
+    })
+})
+
+server.delete('/delete-account',jwtMiddleware,(req,res)=>{
+    console.log('Inside deleteAccount');
+    logic.deleteUserAccount(req.currentAccno).then((result)=>{
+    res.status(result.statusCode).json(result)
+    })
+})

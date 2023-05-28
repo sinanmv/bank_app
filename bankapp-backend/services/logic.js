@@ -161,12 +161,41 @@ const fundTransfer=(fromacc,fromaccpswd,toacc,amt)=>{
     
     )
 }
+const getTransactionHistory = (accno)=>{
+    return db.User.findOne({accno}).then((result)=>{
+        if(result)
+        {
+            return {
+                statusCode:200,
+                transaction:result.transaction
+            }
+        }
+        else
+        {
+            return{
+                statusCode:401,
+                message:'invalid Data'
+            }
+        }
+    })
+}
+
+const deleteUserAccount =(accno)=>{
+    return db.User.deleteOne({accno}).then((result)=>{
+        return {
+            statusCode:200,
+            message:"Account deleted successfully"
+        }
+    })
+}
 
 // export  
 module.exports = {
     register,
     login,
     getBalance,
-    fundTransfer
+    fundTransfer,
+    getTransactionHistory,
+    deleteUserAccount
 }
 

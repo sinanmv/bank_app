@@ -8,8 +8,10 @@ import { RegistrationComponent } from './registration/registration.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http';
+import { SearchPipe } from './pipes/search.pipe';
+import { DeleteAccountComponent } from './delete-account/delete-account.component'
 
 @NgModule({
   declarations: [
@@ -18,13 +20,16 @@ import { HttpClientModule} from '@angular/common/http'
     RegistrationComponent,
     DashboardComponent,
     TransactionComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    SearchPipe,
+    DeleteAccountComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

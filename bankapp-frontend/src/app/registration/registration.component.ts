@@ -54,6 +54,7 @@ export class RegistrationComponent {
       }
       else {
         alert("Invalid Form")
+       
       }
     },1000)
   }

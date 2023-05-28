@@ -18,7 +18,7 @@
                       <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-sharp fa-solid fa-hand-holding-dollar"></i> Fund Transfer</a></li>
                       <li><a class="dropdown-item" routerLink="/transaction"><i class="fa-sharp fa-solid fa-clock-rotate-left"></i> Transaction History</a></li>
                       <li><a class="dropdown-item" href="#"><i class="fa-sharp fa-solid fa-trash"></i> Remove Account</a></li>
-                      <li><a class="dropdown-item" href="#"><i class="fa-sharp fa-solid fa-right-from-bracket"></i> Logout</a></li>
+                      <li><a (click)="logout()" class="dropdown-item" ><i class="fa-sharp fa-solid fa-right-from-bracket"></i> Logout</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -85,14 +85,14 @@
         <p class="mt-2" style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos repellat ipsam vel iusto cumque molestiae beatae iste perferendis! Omnis nihil animi sunt iste exercitationem. Harum, vero. Cumque facilis fugiat magni.</p>
     </div>
     <div class="row">
-        <div class="col">
+        <div class="col-8">
 
-            <input type="text" class="form-control" placeholder="search by">
+          <input type="text"  [(ngModel)]="key" name="search" class="form-control pb-1 me-2" placeholder="search your Contacts">
         </div>
-        <div class="col">
-            
-            <button>Search</button>
+        <div class="col-4">
+          <button class="btn btn-primary" (click)="generatePDF()" style="float: right;">Export as PDF</button>
         </div>
+      
     </div>
 
     <caption class="mt-5">Transaction Details</caption>
@@ -107,27 +107,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
+          <tr *ngFor="let trans of transaction | search:key:'type';let i =index " >
+            <th scope="row">{{i+1}}</th>
+            <td>{{trans.type}}</td>
+            <td>{{trans.fromacc}}</td>
+            <td>{{trans.toacc}}</td>
+            <td>{{trans.amount}}</td>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td >Larry the Bird</td>
-            <td>@twitter</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-          </tr>
+          
         </tbody>
       </table>
 </div>
